@@ -2,10 +2,14 @@
 
 
 # put your code here
-file_ratings = open("scores.txt")
+def ratings(filename):
+    file_ratings = open(filename)
+    new_dict = {}
+    for line in file_ratings:
+        name_and_score = line.strip().split(":")
+        new_dict[name_and_score[0]] = name_and_score[1] # Dictionary Name[KEY] = VALUE
 
-for line in file_ratings:
-    # split_line = line.rsplit()
-    name_and_score = line.strip().split(":")
-    # name_and_score = split_line.split(':')
-    print(name_and_score)
+    for rest, rating in sorted(new_dict.items()):
+        print(f'{rest} is rated at {rating}.')
+
+ratings("scores.txt")
